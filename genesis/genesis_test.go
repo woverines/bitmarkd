@@ -2,7 +2,7 @@
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
-package genesis_test
+package genesis
 
 import (
 	"bytes"
