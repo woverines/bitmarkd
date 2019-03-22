@@ -9,12 +9,13 @@ import (
 	"crypto/rand"
 	"encoding/hex"
 	"fmt"
+	"sync"
+	"time"
+
 	"github.com/bitmark-inc/bitmarkd/fault"
 	"github.com/bitmark-inc/bitmarkd/util"
 	"github.com/bitmark-inc/logger"
 	zmq "github.com/pebbe/zmq4"
-	"sync"
-	"time"
 )
 
 // structure to hold a client connection
@@ -52,6 +53,18 @@ type globalClientDataType struct {
 
 var globalClientData = globalClientDataType{
 	clients: make(map[*zmq.Socket]*Client),
+}
+
+func (c *Client) getAddress() string {
+	return c.address
+}
+
+func (c *Client) getSocket() string {
+	return c.socket.String()
+}
+
+func (c *Client) getPublicKey() string {
+	return string(c.serverPublicKey[:])
 }
 
 // create a client socket ususlly of type zmq.REQ or zmq.SUB
