@@ -55,15 +55,15 @@ var globalClientData = globalClientDataType{
 	clients: make(map[*zmq.Socket]*Client),
 }
 
-func (c *Client) getAddress() string {
+func (c *Client) GetAddress() string {
 	return c.address
 }
 
-func (c *Client) getSocket() string {
+func (c *Client) GetSocket() string {
 	return c.socket.String()
 }
 
-func (c *Client) getPublicKey() string {
+func (c *Client) GetPublicKey() string {
 	return string(c.serverPublicKey[:])
 }
 
