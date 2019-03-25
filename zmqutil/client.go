@@ -497,17 +497,8 @@ func (client *Client) BasicInfo() string {
 	return s
 }
 
-// Return ServerPublicKey
-func (client *Client) GetServerPublicKey() []byte {
-	return client.serverPublicKey
-}
-
-func (c *Client) GetAddress() string {
-	return c.address
-}
-
-func (c *Client) GetSocketInfo() *zmq.Socket {
-	return c.socket
+func (c *Client) GetSocketInfo() string {
+	return c.socket.String()
 }
 
 // Clear Server fields for reusing the client
