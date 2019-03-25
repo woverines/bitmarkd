@@ -55,18 +55,6 @@ var globalClientData = globalClientDataType{
 	clients: make(map[*zmq.Socket]*Client),
 }
 
-func (c *Client) GetAddress() string {
-	return c.address
-}
-
-func (c *Client) GetSocketInfo() string {
-	return c.socket.String()
-}
-
-func (c *Client) GetServerPublicKey() string {
-	return string(c.serverPublicKey[:])
-}
-
 // create a client socket ususlly of type zmq.REQ or zmq.SUB
 func NewClient(socketType zmq.Type, privateKey []byte, publicKey []byte, timeout time.Duration) (*Client, error) {
 
@@ -512,6 +500,14 @@ func (client *Client) BasicInfo() string {
 // Return ServerPublicKey
 func (client *Client) GetServerPublicKey() []byte {
 	return client.serverPublicKey
+}
+
+func (c *Client) GetAddress() string {
+	return c.address
+}
+
+func (c *Client) GetSocketInfo() *zmq.Socket {
+	return c.socket
 }
 
 // Clear Server fields for reusing the client
