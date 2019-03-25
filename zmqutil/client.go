@@ -59,11 +59,11 @@ func (c *Client) GetAddress() string {
 	return c.address
 }
 
-func (c *Client) GetSocket() string {
+func (c *Client) GetSocketInfo() string {
 	return c.socket.String()
 }
 
-func (c *Client) GetPublicKey() string {
+func (c *Client) GetServerPublicKey() string {
 	return string(c.serverPublicKey[:])
 }
 
